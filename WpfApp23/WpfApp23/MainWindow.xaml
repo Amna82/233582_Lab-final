@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfApp23.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp23"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name = "FilterComboBox" HorizontalAlignment = "Left" VerticalAlignment = "Top" Width = "200" Margin = "10,52,0,0"
+                  SelectionChanged = "FilterComboBox_SelectionChanged" />
+        <DataGrid x:Name = "QuestionsDataGrid" AutoGenerateColumns = "False" HorizontalAlignment = "Stretch" VerticalAlignment = "Top"
+                  Margin = "10,50,10,50" ItemsSource = "{Binding Questions}" SelectedItem = "{Binding SelectedQuestion, Mode=TwoWay}" SelectionChanged="QuestionsDataGrid_SelectionChanged" >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header = "Question Text" Binding = "{Binding QuestionText}" />
+                <DataGridTextColumn Header = "Correct Answer" Binding = "{Binding CorrectAnswer}" />
+                <DataGridTextColumn Header = "Marks" Binding = "{Binding Marks}" />
+                <DataGridTextColumn Header = "Time Limit (sec)" Binding = "{Binding TimeLimit}" />
+            </DataGrid.Columns >
+        </DataGrid >
+        <StackPanel Orientation = "Horizontal" HorizontalAlignment = "Left" VerticalAlignment = "Bottom" Margin = "10" >
+            <Button x:Name = "AddQuestionButton" Content = "Add Question" Click = "AddQuestionButton_Click" Margin = "5" />
+            <Button x:Name = "SaveChangesButton" Content = "Save Changes" Click = "SaveChangesButton_Click" Margin = "5" />
+        </StackPanel >
+    </Grid>
+</Window>
